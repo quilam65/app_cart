@@ -3,4 +3,8 @@ class ProductsController < ApplicationController
   def index
     UserMailer.reset_pass('quilam.ct@gmail.com').deliver_now
   end
+
+  def show
+
+  end
 end
