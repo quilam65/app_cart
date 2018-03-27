@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  default_scope order('create_at DESC')
+  default_scope { order(created_at: :ASC) }
 
   validates :title, :description,:price, presence: true
   validates :price, numericality: { greater_than: 0 }
