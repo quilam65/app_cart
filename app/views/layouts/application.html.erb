@@ -10,7 +10,10 @@
   </head>
 
   <body>
-    <%=link_to('My cart', cart_path($cart)) %>
+    <%=link_to('Home', root_url, class:'btn btn-info') %>
+    <% if $cart.present? %>
+      <%=link_to('My cart', cart_path($cart)) %>
+    <% end %>
     <div class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>

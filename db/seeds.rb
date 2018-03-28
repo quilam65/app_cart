@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.destroy_all
 Product.destroy_all
+Cart.destroy_all
+Order.destroy_all
 c = Category.create(title:'Smart Phone')
 Product.create(title: 'Nokia 8', price: 499, description: 'smart phone', category_id: c.id)
 Product.create(title: 'Nokia 9', price: 499, description: 'smart phone', category_id: c.id)
