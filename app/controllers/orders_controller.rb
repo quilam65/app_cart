@@ -1,18 +1,21 @@
 class OrdersController < ApplicationController
-
+before_action :assign_params
   def create
-    current_user.cart
+
     @order = Order.new(@order_params)
-    return redirect_to category_product_path(Produc.find(params[:product_id]), params[:product_id]),
+    return redirect_to cart_path(@order.cart_id),
     notice: 'Add item to cart success!' if @order.save!
-    redirect_to category_product_path(Produc.find(params[:product_id])
-    flash[:alert] ='Fail'
+    product = Product.find(params[:product_id])
+    redirect_to category_product_path(product.category, product.id)
+    flash[:alert] = 'Fail'
   end
+
   private
     def assign_params
-      @order_params = params.require(:order).permit(:quanlity
-                                                  , :order
-                                                  , :cart_id
-                                                  , :product_id )
+      @order_params = params.require(:order).permit(:quanlity,
+                                                    :order,
+                                                    :cart_id,
+                                                    :product_id,
+                                                    :cart_id )
     end
 end

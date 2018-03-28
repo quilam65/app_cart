@@ -4,6 +4,7 @@
   <%= f.input :quanlity %>
   <%= f.input :order %>
   <%= f.input :product_id, label: false, input_html: { value: params[:id], type: 'hidden' }%>
+  <%= f.input :cart_id, label: false, input_html: { value: $cart.id, type: 'hidden' }%>
   <%= f.button :submit %>
   <% end %>
 </h1>
