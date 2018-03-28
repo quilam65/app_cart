@@ -1,3 +1,4 @@
+
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
 
@@ -5,5 +6,8 @@ class CategoriesController < ApplicationController
     @products = Category.find(params[:id]).products
   end
 
+  def index
+    @categories = Category.all
 
+  end
 end
