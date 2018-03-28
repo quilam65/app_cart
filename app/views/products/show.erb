@@ -1,0 +1,9 @@
+<h1>
+  <%= @product.title %>
+  <%= simple_form_for @order do |f| %>
+  <%= f.input :quanlity %>
+  <%= f.input :order %>
+  <%= f.input :product_id, label: false, input_html: { value: params[:id], type: 'hidden' }%>
+  <%= f.button :submit %>
+  <% end %>
+</h1>
