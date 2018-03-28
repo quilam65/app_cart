@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+
   def create
+    current_user.cart
     @order = Order.new(@order_params)
     return redirect_to category_product_path(Produc.find(params[:product_id]), params[:product_id]),
     notice: 'Add item to cart success!' if @order.save!
