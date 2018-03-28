@@ -20,7 +20,7 @@
 		<td data-th="Subtotal" class="text-center"> <%=order.product.price*order.quanlity %></td>
 		<td class="actions" data-th="">
 			<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-			<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+			<a href='<%=order_path(order.id)%>' class='btn btn-danger btn-sm' data-confirm="Are you sure?" data-method="delete"><i class="fa fa-trash-o"></i></a>
 		</td>
 	</tr>
 </tbody>

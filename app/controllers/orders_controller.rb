@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-before_action :assign_params
+before_action :assign_params, only: [:create, :update]
+before_action :get_order, only: [:update, :destroy]
   def create
     @order = Order.where('product_id = ? AND cart_id = ?', @order_params[:product_id], @order_params[:cart_id]).limit(1).first
     if @order.present?
@@ -13,7 +14,19 @@ before_action :assign_params
     flash[:alert] = 'Fail'
   end
 
+  def destroy
+    @order.destroy
+    redirect_to cart_path(@order.cart_id)
+    flash[:notice] = 'Detele product from cart success!'
+  end
+
+  def update
+
+  end
   private
+    def get_order
+      @order = Order.find(params[:id])
+    end
     def assign_params
       @order_params = params.require(:order).permit(:quanlity,
                                                     :order,
