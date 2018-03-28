@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   def search_cart
-    $cart = current_user.carts.where(status: false).first
+    $cart = current_user.carts.where(status: false).limit(1).first
     if !$cart.present?
       $cart = Cart.create(status: false, user_id: current_user.id)
     end
