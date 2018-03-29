@@ -3,7 +3,11 @@ class CartsController < ApplicationController
   before_action :sum_price, only: [:show]
   def show
   end
+
   def index
+  end
+
+  def info
   end
 
   def payment
@@ -30,24 +34,29 @@ class CartsController < ApplicationController
     end
   end
 
+  def update
+    @assigns_cart = params.require(:cart).permit(:name, :phone, :address)
+    @cart.update(@assigns_cart)
+    redirect_to payment_cart_path(@cart.id)
+  end
+
   def execute
     @payment = PayPal::SDK::REST::Payment.find(@cart.payment_id)
     if @payment.execute( :payer_id => @cart.payer_id   )
       @cart.update(status: true)
       flash[:notice] = 'Payment success!'
+      redirect_to root_path
     else
        flash[:notice] = @payment.error # Error Hash
+       redirect_to cart_path(@cart)
     end
-  end
-
-  def histories
-    @payment_histories = PayPal::SDK::REST::Payment.all( :count => 10 )
   end
 
   private
     def get_product
       @cart = Cart.find(params[:id])
     end
+
     def sum_price
       @orders = @cart.orders.includes(:product)
       @sum = 0

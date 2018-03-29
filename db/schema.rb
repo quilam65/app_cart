@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329080812) do
+ActiveRecord::Schema.define(version: 20180329084732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20180329080812) do
     t.string "token_payment"
     t.string "payer_id"
     t.string "payment_id"
+    t.string "address"
+    t.string "name"
+    t.integer "phone"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 

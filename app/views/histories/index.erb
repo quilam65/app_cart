@@ -1,0 +1,23 @@
+%><td><h2>Histories</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Payment ID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @carts.each do |cart| %>
+    <tr>
+        <td><a href="/histories/<%= cart.id %>"><%=cart.payment_id%></a><td>
+        <td><%=cart.name%><td>
+        <td><%=cart.address%><td>
+        <td><%=cart.status%><td>
+        <td><%=cart.created_at%><td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
