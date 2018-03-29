@@ -1,0 +1,4 @@
+
+<a href="<%= @payment.links[1].href %>" data-method="<%= link.method %>"><%= @payment.links[1].method %></a>
+
+<a href="<%= execute_cart_path(params[:id],paymentId: params[:paymentId]) %>"> Finish</a>
