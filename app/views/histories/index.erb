@@ -12,11 +12,11 @@
   <tbody>
     <% @carts.each do |cart| %>
     <tr>
-        <td><a href="/histories/<%= cart.id %>"><%=cart.payment_id%></a><td>
-        <td><%=cart.name%><td>
-        <td><%=cart.address%><td>
-        <td><%=cart.status%><td>
-        <td><%=cart.created_at%><td>
+        <td><a href="/histories/<%= cart.id %>"><%=cart.payment_id%></a></td>
+        <td><%=cart.name%></td>
+        <td><%=cart.address%></td>
+        <td><%=cart.finished%></td>
+        <td><%=cart.created_at%></td>
     </tr>
     <% end %>
   </tbody>
