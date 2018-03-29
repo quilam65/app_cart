@@ -12,8 +12,8 @@
   <body>
     <div class="container">
       <%=link_to('Home', root_url, class:'btn btn-info') %>
-      <% if $cart.present? %>
-        <%=link_to('My cart', cart_path($cart)) %>
+      <% if @cart.present? %>
+        <%=link_to('My cart', cart_path(@cart)) %>
       <% end %>
 
       <p class="notice"><%= notice %></p>
