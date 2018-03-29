@@ -63,54 +63,14 @@ category.each do |cate|
   @doc = @doc['ItemSearchResponse']['Items']['Item']
   @doc.each do |json|
     begin
-      price = json['ItemAttributes']['ListPrice']['Amount'].to_i/100
+      Product.create!(title: json['ItemAttributes']['Title'],
+                      price: json['ItemAttributes']['ListPrice']['Amount'].to_i/100,
+                      category_id: cate.id, image: json['LargeImage']['URL'],
+                      description: json['ItemAttributes']['Feature'][0])
     rescue
-      price = 100
+      puts 'fail======'
     end
-    Product.create!(title: json['ItemAttributes']['Title'], price: price, category_id: cate.id, image: json['LargeImage']['URL'])
   end
 end
 puts 'Get Product success!: '
 puts Product.all.count
-
-
-
-
-# Update client_id, client_secret and redirect_uri
-# puts 'setup'
-# require 'paypal-sdk-rest'
-# include PayPal::SDK::REST
-# PayPal::SDK.configure({
-#   :mode => "sandbox",
-#   :client_id => "Af5Hnwd4pOJ7fKFAvLqBt1MJX2ecE13eWzFxPfvPCgNOawcdlTRrD0f5OZwrUIjNUFGyPGZktXwkl6c2",
-#   :client_secret => "EFbd-XCDugIGvNpFjZ93_HwCFY3ysKsPeWBF55UQhdl5VuAcpzjKjKrqNaQ4jsVIw66IfJskp9cvWtDD"
-# })
-# puts 'create'
-
-#
-# system('curl -v https://api.sandbox.paypal.com/v1/oauth2/token \
-# -H "Accept: application/json" \
-#    -H "Accept-Language: en_US" \
-#    -u "Af5Hnwd4pOJ7fKFAvLqBt1MJX2ecE13eWzFxPfvPCgNOawcdlTRrD0f5OZwrUIjNUFGyPGZktXwkl6c2:EFbd-XCDugIGvNpFjZ93_HwCFY3ysKsPeWBF55UQhdl5VuAcpzjKjKrqNaQ4jsVIw66IfJskp9cvWtDD" \
-#    -d "grant_type=client_credentials"')
-
-
-# curl -v https://api.sandbox.paypal.com/v1/payments/payment \
-#   -H "Content-Type: application/json" \
-#   -H "Authorization: Bearer A21AAHJAShGiAyJqbP_Kd-SKz38sRxBtCMcILDjHJze1Wh5ETv9hjRF4xlVDp0IXrUENlCVxq9F7KQ5cykIt-YHpLZJvuGS-Q" \
-#   -d '{
-#   "intent": "sale",
-#   "redirect_urls": {
-#     "return_url": "http://localhost:3000/carts",
-#     "cancel_url": "http://localhost:3000"
-#   },
-#   "payer": {
-#     "payment_method": "paypal"
-#   },
-#   "transactions": [{
-#     "amount": {
-#       "total": "7.47",
-#       "currency": "USD"
-#     }
-#   }]
-# }'

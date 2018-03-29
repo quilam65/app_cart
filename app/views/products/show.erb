@@ -4,6 +4,7 @@
   </div>
   <div class="col-xs-5" style="border:0px solid gray">
       <h3><%= @product.title %></h3>
+      <span> <%=@product.description %></span>
       <h6 class="title-price"><small>PRICE</small></h6>
       <h3 style="margin-top:0px;">$<%= @product.price %></h3>
         <%= simple_form_for @order do |f| %>

@@ -20,7 +20,11 @@
       <!-- <td><a href="javascript: history.go(1)" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td> -->
       <td colspan="2" class="hidden-xs"></td>
       <td class="hidden-xs text-center"><strong>Total $<%=@cart.total_amount_cents %></strong></td>
-      <td><a href='<%= info_cart_path(params[:id]) %>' class="btn btn-success btn-block">Pay <i class="fa fa-angle-right"></i></a></td>
+      <% if @cart.total_amount_cents>0 %>
+        <td><a href='<%= info_cart_path(params[:id]) %>' class="btn btn-success btn-block">Pay <i class="fa fa-angle-right"></i></a></td>
+      <% else %>
+        <td><a href='<%= root_path() %>' class="btn btn-success btn-block">Shopping <i class="fa fa-angle-right"></i></a></td>    
+      <% end %>
     </tr>
   </tfoot>
 </table>

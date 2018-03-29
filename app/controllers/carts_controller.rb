@@ -36,8 +36,12 @@ class CartsController < ApplicationController
 
   def update
     @assigns_cart = params.require(:cart).permit(:name, :phone, :address)
-    @cart.update(@assigns_cart)
-    redirect_to payment_cart_path(@cart.id)
+    if @cart.update(@assigns_cart)
+      redirect_to payment_cart_path(@cart.id)
+    else
+      redirect_to info_cart_path(@cart.id)
+      flash[:alert] = 'Input not empty!' 
+    end
   end
 
   def execute
