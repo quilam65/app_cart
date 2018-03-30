@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <%= link_to('My history', edit_user_registration_path(current_user), class:'btn btn-info') if current_user.present? %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
