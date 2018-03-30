@@ -2,6 +2,10 @@ class CartsController < ApplicationController
   before_action :get_product
   before_action :sum_price, only: [:show]
   def show
+    # redirect to history hshow cart
+    if @cart.status==true
+      redirect_to "/histories/#{@cart.id}"
+    end
   end
 
   def index
@@ -40,7 +44,7 @@ class CartsController < ApplicationController
       redirect_to payment_cart_path(@cart.id)
     else
       redirect_to info_cart_path(@cart.id)
-      flash[:alert] = 'Input not empty!' 
+      flash[:alert] = 'Input not empty!'
     end
   end
 
