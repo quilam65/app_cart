@@ -50,9 +50,6 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
-    bootstrap-kaminari-views (0.0.5)
-      kaminari (>= 0.13)
-      rails (>= 3.1)
     builder (3.2.3)
     byebug (10.0.1)
     capybara (2.18.0)
@@ -252,7 +249,6 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bootstrap (~> 4.0.0)
-  bootstrap-kaminari-views
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
