@@ -6,6 +6,71 @@ RailsAdmin.config do |config|
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
+
+  config.current_user_method(&:current_user)
+
+  config.model 'Cart' do
+    list do
+      scopes [:finished]
+      sort_by :finished
+      field :name
+      field :phone
+      field :address
+      field :finished
+      field :total_amount_cents
+      field :updated_at
+    end
+    edit do
+      field :finished
+    end
+  end
+  config.model 'Category' do
+    list do
+      field :title
+      field :created_at
+    end
+    edit do
+      field :title
+    end
+  end
+
+  config.model 'Product' do
+    list do
+      field :category do
+        searchable ["category.title"]
+      end
+      field :image do
+        pretty_value do
+          bindings[:view].tag(:img, {:height=> '50px', :src => bindings[:object].image })
+        end
+      end
+      field :title
+      field :description
+      field :price
+    end
+    edit do
+      field :category do
+        searchable ["category.title"]
+      end
+      field :title
+      field :description
+      field :price
+    end
+
+    show do
+      field :category do
+        searchable ["category.title"]
+      end
+      field :image do
+        pretty_value do
+          bindings[:view].tag(:img, {:height=> '50px', :src => bindings[:object].image })
+        end
+      end
+      field :title
+      field :description
+      field :price
+    end
+  end
   # config.current_user_method(&:current_user)
 
   ## == Cancan ==
