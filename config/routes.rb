@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :products, concerns: :paginatable
   end
   get 'histories/index'
-  get 'histories/:id' => 'histories#show'
+  get 'histories/:id' => 'histories#show', concerns: :paginatable
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

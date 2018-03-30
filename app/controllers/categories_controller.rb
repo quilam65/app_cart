@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all.page(params[:page]).per(3)
-
+    @categories = Category.all.page(params[:page]).per(5)
   end
 end
