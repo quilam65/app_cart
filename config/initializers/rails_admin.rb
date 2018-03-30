@@ -24,6 +24,14 @@ RailsAdmin.config do |config|
       field :finished
     end
   end
+  config.model 'User' do
+    list do
+      field :email
+      field :username
+      field :created_at
+    end
+  end
+
   config.model 'Category' do
     list do
       field :title
