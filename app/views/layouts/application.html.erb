@@ -4,8 +4,8 @@
     <title>AppCart</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   </head>
 
@@ -13,6 +13,8 @@
     <%= link_to('My account', edit_user_registration_path(current_user), class:'btn btn-info') if current_user.present? %>
     <div class="container">
       <%=link_to('Home', root_url, class:'btn btn-info') %>
+      <%=link_to('My history', '/histories/index', class:'btn btn-info') %> 
+      <%= link_to('My account', edit_user_registration_path(current_user), class:'btn btn-info') if current_user.present? %>
       <% if @cart.present? %>
         <%=link_to('My cart', cart_path(@cart)) %>
       <% end %>
