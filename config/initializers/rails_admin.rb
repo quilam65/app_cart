@@ -11,7 +11,7 @@ RailsAdmin.config do |config|
 
   config.model 'Cart' do
     list do
-      scopes [:finished]
+      # scopes [:finished]
       sort_by :finished
       field :name
       field :phone
@@ -27,7 +27,6 @@ RailsAdmin.config do |config|
   config.model 'User' do
     list do
       field :email
-      field :username
       field :created_at
     end
   end
