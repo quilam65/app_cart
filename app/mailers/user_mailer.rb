@@ -2,10 +2,9 @@ class UserMailer < ApplicationMailer
   default from: "anhqui1995@gmail.com"
   layout 'mailer'
 
-  def reset_pass(email,pass)
+  def reset_pass(email)
     @user = User.find_by_email(email)
-    @pass = pass
-    @url  = 'http://localhost:3000/users/sign_in'
+    @url  = 'http://example.com/login'
     mail(to: email, subject: 'Reset password')
   end
 
