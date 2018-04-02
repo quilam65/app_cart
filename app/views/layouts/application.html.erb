@@ -6,12 +6,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   </head>
 
   <body>
+    <div class="container">
+      <%=link_to('Home', root_url, class:'btn btn-info') %>
+      <% if @cart.present? %>
+        <%=link_to('My cart', cart_path(@cart)) %>
+      <% end %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
     <%= link_to('My account', edit_user_registration_path(current_user), class:'btn btn-info') if current_user.present? %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
   </body>
 </html>
