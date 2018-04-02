@@ -14,7 +14,7 @@ Rails.application.configure do
   :domain             => 'localhost.com',
   :authentication     => :plain,
   :user_name          => 'anhqui1995@gmail.com',
-  :password           => 'arduinobegin'
+  :password           => ''
   }
 
   # config.action_mailer.smtp_settings = {
