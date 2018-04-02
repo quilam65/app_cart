@@ -1,4 +1,26 @@
-<p><%=@cart.payment_id %></p>
-<p><%=@cart.name %></p>
-<p><%=@cart.address %></p>
-<p><%=@cart.phone %></p>
+<h2>My history</h2>
+<p><strong>Name: </strong><%=@cart.name %></p>
+<p><strong>Phone: </strong><%=@cart.phone %></p>
+<p><strong>Address: </strong><%=@cart.address %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.orders.each do |order| %>
+    <tr>
+        <td><img src="<%= order.product.image %>" alt="" width="50px"></td>
+        <td><%= order.product.title %></td>
+        <td><%= order.product.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<p>Total: <%=@cart.total_amount_cents %></p>

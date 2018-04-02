@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
-before_action :assign_params, only: [:create, :update]
+before_action :assign_params, only: [:create]
 before_action :get_order, only: [:update, :destroy]
+skip_before_action :verify_authenticity_token, :only => [:update]
+
   def create
     @order = Order.where('product_id = ? AND cart_id = ?', @order_params[:product_id], @order_params[:cart_id]).limit(1).first
     if @order.present?
@@ -20,8 +22,13 @@ before_action :get_order, only: [:update, :destroy]
   end
 
   def update
-
+    if @order.update(quanlity: params[:quanlity].to_i)
+      flash[:notice] = 'Update quanlity success'
+    else
+      flash[:notice] = 'Update quanlity fail!'
+    end
   end
+
   private
     def get_order
       @order = Order.find(params[:id])
