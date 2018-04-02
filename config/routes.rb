@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   
-  get '/reset_passwords/get_info', to: 'reset_passwords#get_info'
   root 'categories#index'
 
   concern :paginatable do
