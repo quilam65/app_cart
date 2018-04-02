@@ -1,0 +1,11 @@
+FactoryBot.define do
+  factory :cart do
+    total_amount_cents 100
+    status true
+    phone 01919191919
+    name 'name'
+    address '195 dien bien phu'
+    finished false
+    user_id { create(:user).id }
+  end
+end
