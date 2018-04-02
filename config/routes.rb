@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  
+  get '/reset_passwords/get_info', to: 'reset_passwords#get_info'
   root 'categories#index'
 
   resources :orders
