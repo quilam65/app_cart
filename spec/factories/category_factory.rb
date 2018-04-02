@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :product do
-    title "category name"
+  factory :category do
+    title 'category name'
   end
 end

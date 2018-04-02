@@ -16,7 +16,7 @@
         <td><%=cart.name%></td>
         <td><%=cart.address%></td>
         <td>
-          <% if cart.finished %>
+          <% if !cart.finished %>
             Handing
           <% else %>
             Finished
