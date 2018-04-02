@@ -52,7 +52,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do
@@ -64,6 +65,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "letter_opener"
   gem 'awesome_print'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -8,9 +8,6 @@ class CartsController < ApplicationController
     end
   end
 
-  def index
-  end
-
   def info
   end
 
@@ -29,8 +26,10 @@ class CartsController < ApplicationController
         :description => "creating a payment" } ] } )
 
     @payment.create
+
     if params[:token].present? && params[:PayerID].present?
         @cart.update(payment_id: params[:paymentId], token_payment: params[:token], payer_id: params[:PayerID])
+        redirect_to execute_cart_path(id: @cart.id, paymentId:params[:paymentId])
     end
   end
 
