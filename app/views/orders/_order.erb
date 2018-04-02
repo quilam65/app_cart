@@ -12,13 +12,13 @@
 				</div>
 			</div>
 		</td>
-		<td data-th="Price">
+		<td data-th="Price" class='price'>
 			<%= order.product.price %>
 		</td>
-		<td data-th="Quantity">
-			<input type="number" class="form-control text-center" value='<%= order.quanlity %>'>
+		<td data-th="Quantity" name='<%=order.id%>'>
+			<input type="number" class='quanltiy' class="form-control text-center" value='<%= order.quanlity %>'>
 		</td>
-		<td data-th="Subtotal" class="text-center"> <%=order.product.price*order.quanlity %></td>
+		<td data-th="Subtotal" class="text-center quanlity-price"> <%=order.product.price*order.quanlity %></td>
 		<td class="actions" data-th="">
 			<a href='<%=order_path(order.id)%>' class='btn btn-danger btn-sm' data-confirm="Are you sure?" data-method="delete"><i class="fa fa-trash-o"></i></a>
 		</td>
