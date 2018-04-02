@@ -11,6 +11,7 @@
 
   <body>
     <div class="container">
+      <%=link_to('Logout',destroy_user_session_path(), method: :delete) %>
       <%=link_to('Home', root_url, class:'btn btn-info') %>
       <% if @cart.present? %>
         <%=link_to('My cart', cart_path(@cart)) %>

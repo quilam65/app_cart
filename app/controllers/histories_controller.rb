@@ -1,5 +1,4 @@
 class HistoriesController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     # @payment_histories = PayPal::SDK::REST::Payment.all( :count => 10 )

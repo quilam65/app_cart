@@ -24,36 +24,25 @@ class CartsController < ApplicationController
           :currency => "USD" },
         :description => "creating a payment" } ] } )
 
-    if @payment.create
-      @payment.id     # Payment Id
-    else
-      @payment.error  # Error Hash
-    end
-    if !params[:token].nil? && !params[:PayerID].nil?
+    @payment.create
+    if params[:token].present? && params[:PayerID].present?
         @cart.update(payment_id: params[:paymentId], token_payment: params[:token], payer_id: params[:PayerID])
     end
   end
 
   def update
     @assigns_cart = params.require(:cart).permit(:name, :phone, :address)
-    if @cart.update(@assigns_cart)
-      redirect_to payment_cart_path(@cart.id)
-    else
-      redirect_to info_cart_path(@cart.id)
-      flash[:alert] = 'Input not empty!' 
-    end
+
+    return redirect_to payment_cart_path(@cart.id) if @cart.update(@assigns_cart)
+    redirect_to info_cart_path(@cart.id), alert: 'Input not empty!'
   end
 
   def execute
     @payment = PayPal::SDK::REST::Payment.find(@cart.payment_id)
-    if @payment.execute( :payer_id => @cart.payer_id   )
-      @cart.update(status: true)
-      flash[:notice] = 'Payment success!'
-      redirect_to root_path
-    else
-       flash[:notice] = @payment.error # Error Hash
-       redirect_to cart_path(@cart)
+    if @payment.execute( :payer_id => @cart.payer_id)
+      return redirect_to root_path, notice: 'Payment success!' if @cart.update(status: true)
     end
+    redirect_to cart_path(@cart), notice: @payment.error # Error Hash
   end
 
   private

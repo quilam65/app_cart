@@ -10,8 +10,7 @@ before_action :get_order, only: [:update, :destroy]
     end
     return redirect_to cart_path(@order.cart_id), notice: 'Add item to cart success!' if @order.save
     product = Product.find(@order_params[:product_id])
-    redirect_to category_product_path(product.category, product.id)
-    flash[:alert] = 'Fail'
+    redirect_to category_product_path(product.category, product.id), alert: 'Fail'
   end
 
   def destroy
