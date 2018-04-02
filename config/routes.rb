@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  
+
   root 'categories#index'
 
   concern :paginatable do
@@ -18,9 +18,12 @@ Rails.application.routes.draw do
   end
   resources :categories, concerns: :paginatable do
     resources :products, concerns: :paginatable
+  resources :categories do
+    resources :products
   end
   get 'histories/index'
   get 'histories/:id' => 'histories#show', concerns: :paginatable
+  get 'histories/:id' => 'histories#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
