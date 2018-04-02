@@ -4,7 +4,7 @@ class HistoriesController < ApplicationController
   def index
     # @payment_histories = PayPal::SDK::REST::Payment.all( :count => 10 )
     # @payment_histories = @payment_histories.payments
-    @carts = current_user.carts.finished.page(params[:page]).per(2)
+    @carts = current_user.carts.where(status: true).page(params[:page]).per(5)
   end
 
   def show
