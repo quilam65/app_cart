@@ -6,8 +6,15 @@ RailsAdmin.config do |config|
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
-
+  
   config.current_user_method(&:current_user)
+
+  config.authorize_with do
+    return redirect_to main_app.new_account_session_path, alert: 'Please login to continue...' if current_user.nil?
+    redirect_to main_app.root_path, alert: 'You not permission admin' if !current_user.role?
+  end
+
+
 
   config.model 'Cart' do
     list do
@@ -16,21 +23,59 @@ RailsAdmin.config do |config|
       field :name
       field :phone
       field :address
+      field :orders do
+        searchable ["orders"]
+      end
       field :finished
       field :total_amount_cents
       field :updated_at
     end
+
     edit do
       field :finished
+    end
+
+    show do
+      field :name
+      field :phone
+      field :address
+      field :orders do
+        searchable ["orders"]
+      end
+      field :products do
+        searchable ["products.title"]
+      end
+      field :finished
+      field :total_amount_cents
+      field :updated_at
     end
   end
   config.model 'User' do
     list do
       field :email
-      field :username
+      field :role
+      field :created_at
+    end
+    edit do
+      field :email
+      field :role
       field :created_at
     end
   end
+
+  config.model 'Order' do
+    list do
+      field :cart do
+        searchable ["cart.name"]
+      end
+      field :product do
+        searchable ["product.title"]
+      end
+      field :quanlity
+    end
+  end
+
+
 
   config.model 'Category' do
     list do
@@ -56,6 +101,7 @@ RailsAdmin.config do |config|
       field :description
       field :price
     end
+
     edit do
       field :category do
         searchable ["category.title"]
@@ -105,7 +151,9 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
+    show_in_app do
+      except ['Order']
+    end
 
     ## With an audit adapter, you can add:
     # history_index
