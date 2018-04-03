@@ -9,5 +9,6 @@ def sign_up
     fill_in 'user[password_confirmation]', with: user.password
     click_on 'Sign up'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
+    @current_user = User.find_by_email(user.email)
   end
 end
