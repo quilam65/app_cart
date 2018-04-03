@@ -8,9 +8,6 @@ class CartsController < ApplicationController
     end
   end
 
-  def index
-  end
-
   def info
   end
 
