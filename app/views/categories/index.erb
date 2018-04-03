@@ -1,6 +1,4 @@
 <% @categories.each do |category| %>
-  <p>
-    <%= link_to(category.title, category_path(category)) %>
-  </p>
+  <%= render 'category', category: category %>
 <% end %>
 <%= paginate @categories %>

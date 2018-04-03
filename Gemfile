@@ -32,6 +32,7 @@ gem 'jquery-rails'
 gem 'nokogiri'
 gem 'paypal-sdk-rest'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'rails_admin', '~> 1.3'
 
 

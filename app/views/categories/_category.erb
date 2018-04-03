@@ -1,0 +1,10 @@
+<div class="col-md-4">
+  <a href="<%= category_path(category) %>">
+    <div class="product-item">
+      <div class="pi-img-wrapper">
+        <img src="<%= category.products.first.image %>" class="img-responsive" alt="Berry Lace Dress">
+      </div>
+      <h3><a href="<%= category_path(category) %>"><%=category.title%></a></h3>
+    </div>
+  </a>
+</div>

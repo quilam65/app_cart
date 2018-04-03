@@ -1,6 +1,4 @@
 <% @products.each do |product| %>
-  <p>
-    <%= link_to(product.title, category_product_path(product.category_id, product)) %>
-  </p>
+  <%= render 'products/product', product: product %>
 <% end %>
-<%= paginate @products%>
+<%= paginate @products, :theme => 'twitter-bootstrap-3'%>
