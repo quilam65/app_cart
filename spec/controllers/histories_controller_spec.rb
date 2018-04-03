@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe HistoriesController, type: :controller do
   login_admin
-  let!(:carts) { create_list(:cart, 5, user_id: User.last.id) }
+  let!(:carts) { create_list(:cart, 5, user_id: @current_user.id) }
   let(:orders) { create_list(:product, 5, cart_id: carts.first.id) }
 
   describe 'index' do
