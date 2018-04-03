@@ -9,7 +9,7 @@
       <h3 style="margin-top:0px;">$<%= @product.price %></h3>
         <%= simple_form_for @order do |f| %>
           <div class='form-group'>
-            <%= f.input :quanlity, input_html: { class: 'form-control' } %>
+            <%= f.input :quanlity, input_html: { class: 'form-control', value: 1 } %>
           </div>
           <div class='form-group'>
             <%= f.input :order, input_html: { class: 'form-control' } %>
