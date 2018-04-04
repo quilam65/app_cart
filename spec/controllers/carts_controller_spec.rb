@@ -29,6 +29,8 @@ RSpec.describe CartsController, type: :controller do
     it 'update information buyer' do
       post :update, params: { id: cart.id, cart: cart_b }
       expect(assigns(:cart).name).to eq cart_b[:name]
+      expect(response).to redirect_to payment_cart_path(cart.id)
     end
   end
+
 end
