@@ -10,11 +10,18 @@ Category.delete_all
 Product.delete_all
 Cart.delete_all
 Order.delete_all
+User.create(email: 'email1@gmail.com', password:'123123', password_confirmation:'123123',
+            name: 'foxzi', phone: '0909090909', address:'194 dien bien phu')
 Category.create(title:'Iphone')
 Category.create(title:'Samsung')
 Category.create(title:'Sony')
 Category.create(title:'Huawai')
 Category.create(title:'LG')
+Category.create(title:'Motorola')
+Category.create(title:'Xiaomi')
+Category.create(title:'Philips')
+Category.create(title:'Oppo')
+Category.create(title:'HTC')
 category = Category.all
 
 # Your Access Key ID, as taken from the Your Account page

@@ -4,17 +4,17 @@ Rails.application.routes.draw do
 
   root 'categories#index'
 
-
-  resources :orders
-  resources :carts do
+  resources :users, only: [:show, :update]
+  resources :orders, only: [:create, :destroy, :update]
+  resources :carts, only:[:show, :index, :update] do
     member do
      get 'payment'
      get 'execute'
      get 'info'
    end
   end
-  resources :categories do
-    resources :products
+  resources :categories, only:[:show, :index] do
+    resources :products, only: [:show]
   end
   get 'histories' => 'histories#index'
   get 'histories/:id' => 'histories#show'
