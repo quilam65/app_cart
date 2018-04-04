@@ -15,7 +15,8 @@
       <%=link_to('Home', root_url, class:'btn btn-info') %>
       <%=link_to('My history', '/histories', class:'btn btn-info') %>
       <% if current_user.present? %>
-        <%=link_to('My account', edit_user_registration_path(current_user), class:'btn btn-info') %>
+        <%=link_to('My account', user_path(current_user), class:'btn btn-info') %>
+        <h3>Hello <%= current_user.name %></h3>
         <%=link_to('Logout', destroy_user_session_path(), method: :delete, class:'btn btn-info') %>
       <% end %>
       <% if @cart.present? %>
