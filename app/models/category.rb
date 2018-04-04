@@ -3,4 +3,5 @@ class Category < ApplicationRecord
 
   validates :title, presence: true
   has_many :products
+  paginates_per 6
 end
