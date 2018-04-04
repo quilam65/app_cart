@@ -1,6 +1,13 @@
-<% @categories.each do |category| %>
-  <p>
-    <%= link_to(category.title, category_path(category)) %>
-  </p>
-<% end %>
-<%= paginate @categories %>
+<div class="row">
+  <% @categories.each do |category| %>
+    <%= render 'category', category: category %>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <%= paginate @categories, :theme => 'twitter-bootstrap-3'%>
+  </div>
+</div>

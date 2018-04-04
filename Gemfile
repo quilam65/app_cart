@@ -27,11 +27,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'simple_form'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'paypal-sdk-rest'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'rails_admin', '~> 1.3'
 
 

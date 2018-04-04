@@ -5,6 +5,7 @@
       <th>Payment ID</th>
       <th>Name</th>
       <th>Address</th>
+      <th>Total</th>
       <th>Status</th>
       <th>Date</th>
     </tr>
@@ -21,10 +22,11 @@
           <% else %>
             Finished
           <% end %>
-        <td>
+        </td>
+        <td>$ <%=cart.total_amount_cents %></td>
         <td><%=cart.created_at%></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate @carts%>
+<%= paginate @carts, :theme => 'twitter-bootstrap-3'%>

@@ -54,10 +54,12 @@ GEM
     awesome_print (1.8.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
-    bootstrap (4.0.0)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     byebug (10.0.1)
     capybara (2.18.0)
@@ -150,7 +152,6 @@ GEM
       multi_json (~> 1.0)
       xml-simple
     pg (1.0.0)
-    popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
@@ -287,7 +288,8 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bootstrap (~> 4.0.0)
+  bootstrap-kaminari-views
+  bootstrap-sass (~> 3.3.7)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)

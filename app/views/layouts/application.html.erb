@@ -4,25 +4,24 @@
     <title>AppCart</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application' %>
     <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   </head>
 
   <body>
     <div class="container">
-      <%=link_to('Home', root_url, class:'btn btn-info') %>
-      <%=link_to('My history', '/histories', class:'btn btn-info') %>
-      <% if current_user.present? %>
-        <%=link_to('My account', user_path(current_user), class:'btn btn-info') %>
-        <h3>Hello <%= current_user.name %></h3>
-        <%=link_to('Logout', destroy_user_session_path(), method: :delete, class:'btn btn-info') %>
+      <%= render 'layouts/navbar' %>
+      <% if notice.present? %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
       <% end %>
-      <% if @cart.present? %>
-        <%=link_to('My cart', cart_path(@cart)) %>
+      <% if alert.present? %>
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
       <% end %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>
