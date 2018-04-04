@@ -2,7 +2,7 @@
   <div class="product-item category">
     <a href="<%= category_path(category) %>">
       <div class="pi-img-wrapper">
-        <img src="<%= category.products.first.image %>" class="img-responsive" alt="Berry Lace Dress">
+        <img src="<%= category.products.first.try(:image) %>" class="img-responsive" alt="Berry Lace Dress">
       </div>
       <h3><a href="<%= category_path(category) %>"><%=category.title%></a></h3>
       <div class="sticker sticker-new"></div>

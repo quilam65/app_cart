@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe CategoriesController, type: :controller do
 
   let!(:categories) { create_list(:category,3) }
-  let!(:products) { create_list(:product, 5, category_id: categories.first.id) }
+  let!(:products) { create_list(:product, 3, category_id: categories.first.id) }
   login_admin
 
   describe 'show' do

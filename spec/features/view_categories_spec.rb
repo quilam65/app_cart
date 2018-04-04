@@ -5,11 +5,12 @@ describe 'View Categories', type: :feature do
 
   let!(:categories) { create_list(:category,5) }
   let!(:products) { create_list(:product, 5, category_id: categories.first.id) }
+
   it 'index' do
     visit root_path
-    expect(page).to have_content categories.first.title
-    expect(page).to have_content categories.second.title
-    expect(page).to have_content categories.third.title
+    expect(page).to have_link categories.first.title
+    expect(page).to have_link categories.second.title
+    expect(page).to have_link categories.third.title
     expect(page).to have_link 'Home'
   end
 

@@ -7,8 +7,8 @@ describe 'View cart', type: :feature do
   let!(:cart) { create(:cart, status: false, user_id: @current_user.id) }
   it 'show' do
     visit root_path
-    expect(page).to have_content 'My cart'
-    click_on 'My cart'
+    expect(page).to have_content 'Cart'
+    click_on 'Cart'
     expect(page).to have_content 'My cart'
   end
 
