@@ -4,6 +4,7 @@ module ControllerAuth
       @request.env["devise.mapping"] = Devise.mappings[:user]
       user = FactoryBot.create(:user)
       sign_in user
+      @current_user = user
       # request.session[:user] = user.id
     end
   end
