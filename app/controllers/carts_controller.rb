@@ -17,8 +17,8 @@ class CartsController < ApplicationController
       :payer => {
         :payment_method => "paypal" },
       :redirect_urls => {
-        :return_url => 'http://localhost:3000' + payment_cart_path(params[:id]),
-        :cancel_url => 'http://localhost:3000' + cart_path(params[:id]) },
+        :return_url => 'http://store-zi.herokuapp.com' + payment_cart_path(params[:id]),
+        :cancel_url => 'http://store-zi.herokuapp.com' + cart_path(params[:id]) },
       :transactions => [ {
         :amount => {
           :total => @cart.total_amount_cents,
