@@ -4,7 +4,7 @@ describe 'View cart', type: :feature do
   sign_up
 
   let!(:product) { create(:product) }
-  let!(:cart) { create(:cart, status: false, user_id: @current_user) }
+  let!(:cart) { create(:cart, status: false, user_id: @current_user.id) }
   it 'show' do
     visit root_path
     expect(page).to have_content 'My cart'
