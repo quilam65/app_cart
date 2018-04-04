@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'categories#index'
 
-
+  resources :users, only: [:show, :update]
   resources :orders, only: [:create, :destroy, :update]
   resources :carts, only:[:show, :index, :update] do
     member do

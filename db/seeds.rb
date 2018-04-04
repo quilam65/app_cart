@@ -10,7 +10,8 @@ Category.delete_all
 Product.delete_all
 Cart.delete_all
 Order.delete_all
-
+User.create(email: 'email1@gmail.com', password:'123123', password_confirmation:'123123',
+            name: 'foxzi', phone: '0909090909', address:'194 dien bien phu')
 Category.create(title:'Iphone')
 Category.create(title:'Samsung')
 Category.create(title:'Sony')
