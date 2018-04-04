@@ -13,5 +13,5 @@ test:
   <<: *default
 production:
   mode: live
-  client_id: Af5Hnwd4pOJ7fKFAvLqBt1MJX2ecE13eWzFxPfvPCgNOawcdlTRrD0f5OZwrUIjNUFGyPGZktXwkl6c2
-  client_secret: XCDugIGvNpFjZ93_HwCFY3ysKsPeWBF55UQhdl5VuAcpzjKjKrqNaQ4jsVIw66IfJskp9cvWtDD
+  client_id: CLIENT_ID
+  client_secret: CLIENT_SECRET
