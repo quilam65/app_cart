@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+  
+  get '/reset_passwords/get_info', to: 'reset_passwords#get_info'
   root 'categories#index'
+
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
 
   resources :orders
   resources :carts do
@@ -10,11 +17,11 @@ Rails.application.routes.draw do
      get 'info'
    end
   end
-  resources :categories do
-    resources :products
+  resources :categories, concerns: :paginatable do
+    resources :products, concerns: :paginatable
   end
   get 'histories/index'
-  get 'histories/:id' => 'histories#show'
+  get 'histories/:id' => 'histories#show', concerns: :paginatable
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -31,6 +31,8 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'paypal-sdk-rest'
+gem 'kaminari'
+gem 'rails_admin', '~> 1.3'
 
 
 # Use Redis adapter to run Action Cable in production
@@ -50,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
+  gem 'factory_bot'
 end
 
 group :development do
