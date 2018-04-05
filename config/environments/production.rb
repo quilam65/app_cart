@@ -32,7 +32,7 @@ Rails.application.configure do
   :domain             => 'localhost.com',
   :authentication     => :plain,
   :user_name          => 'anhqui1995@gmail.com',
-  :password           => ENV["PASS_MAIL"]
+  :password           => ENV['PASS_MAIL']
   }
 
   # Compress JavaScripts and CSS.
