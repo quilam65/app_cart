@@ -1,7 +1,4 @@
 development: &default
-  mode: sandbox
-  client_id: Af5Hnwd4pOJ7fKFAvLqBt1MJX2ecE13eWzFxPfvPCgNOawcdlTRrD0f5OZwrUIjNUFGyPGZktXwkl6c2
-  client_secret: EFbd-XCDugIGvNpFjZ93_HwCFY3ysKsPeWBF55UQhdl5VuAcpzjKjKrqNaQ4jsVIw66IfJskp9cvWtDD
   # # with Proxy
   # http_proxy: http://proxy-ipaddress:3129/
   # # with CA File
