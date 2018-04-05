@@ -33,7 +33,7 @@ Rails.application.configure do
   :tls                => true,
   :domain             => 'store-zi.herokuapp.com',
   :authentication     => :plain,
-  :user_name          => 'anhqui1995@gmail.com',
+  :user_name          => 'coxanh.hotro@gmail.com',
   :password           => ENV['PASS_MAIL']
   }
 
