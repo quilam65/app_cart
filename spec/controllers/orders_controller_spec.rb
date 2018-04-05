@@ -11,6 +11,7 @@ RSpec.describe OrdersController, type: :controller do
       expect(assigns(:order).quanlity).to eq order[:quanlity]
       expect(assigns(:order).product_id).to eq order[:product_id]
       expect(assigns(:order).order).to eq order[:order]
+      expect(response).to redirect_to cart_path(assigns(:order).cart_id)
     end
   end
 
@@ -19,6 +20,7 @@ RSpec.describe OrdersController, type: :controller do
       expect{
         delete :destroy, params: { id: orders.first.id }
       }.to change(Order, :count).by(-1)
+      expect(response).to redirect_to cart_path(orders.first.cart_id)
     end
   end
 

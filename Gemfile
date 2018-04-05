@@ -35,7 +35,6 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'rails_admin', '~> 1.3'
 
-
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -55,6 +54,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
 end
 
 group :development do
