@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :get_order, only: [:update, :destroy]
   skip_before_action :verify_authenticity_token, :only => [:update]
   before_action :authenticate_user!
-  
+
   def create
     @order = Order.where('product_id = ? AND cart_id = ?', @order_params[:product_id], @order_params[:cart_id]).limit(1).first
     if @order.present?
@@ -13,8 +13,7 @@ class OrdersController < ApplicationController
       @order = Order.new(@order_params)
     end
     return redirect_to cart_path(@order.cart_id), notice: 'Add item to cart success!' if @order.save
-    product = Product.find(@order_params[:product_id])
-    redirect_to category_product_path(product.category, product.id), alert: 'Fail'
+    redirect_to category_product_path(@order.product.category, @order.product.id), alert: 'Fail'
   end
 
   def destroy
@@ -24,11 +23,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(quanlity: params[:quanlity].to_i)
-      flash[:notice] = 'Update quanlity success'
-    else
-      flash[:notice] = 'Update quanlity fail!'
-    end
+    return flash[:notice] = 'Update quanlity success' if @order.update(quanlity: params[:quanlity].to_i)
+    flash[:notice] = 'Update quanlity fail!'
   end
 
   private
