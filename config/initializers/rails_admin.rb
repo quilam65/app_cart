@@ -6,7 +6,7 @@ RailsAdmin.config do |config|
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
-  
+
   config.current_user_method(&:current_user)
 
   config.authorize_with do
@@ -18,7 +18,7 @@ RailsAdmin.config do |config|
 
   config.model 'Cart' do
     list do
-      scopes [:finished]
+      scopes [:checkout]
       sort_by :finished
       field :name
       field :phone
