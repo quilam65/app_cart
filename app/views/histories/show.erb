@@ -15,7 +15,9 @@
     <% @cart.orders.each do |order| %>
     <tr>
         <td><img src="<%= order.product.image %>" alt="" width="50px"></td>
-        <td><%= order.product.title %></td>
+        <td>
+            <a href="<%=category_product_path(order.product.category_id, order.product.id)%>"><%= order.product.title %></a>
+        </td>
         <td><%= order.product.price %></td>
     </tr>
     <% end %>

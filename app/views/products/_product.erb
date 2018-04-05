@@ -1,0 +1,10 @@
+<div class="col-md-4">
+    <div class="product-item">
+      <div class="pi-img-wrapper">
+        <img src="<%= product.image %>" class="img-responsive" alt="Berry Lace Dress">
+      </div>
+      <h3><a href="<%= category_product_path(product.category_id, product) %>"><%=product.title%></a></h3>
+      <div class="pi-price"><%=product.price%></div>
+      <a href="<%= category_product_path(product.category_id, product) %>" class="btn add2cart">Add to cart</a>
+    </div>
+</div>
