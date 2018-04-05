@@ -23,4 +23,19 @@ describe 'View Categories', type: :feature do
     expect(page).to have_content categories.first.products[4].title
   end
 
+  context 'kaminari' do
+    let!(:categories) { create_list(:category,13) }
+    it 'categories' do
+      visit root_path
+      expect(page).to have_link 'Last »'
+      click_on 'Last »'
+      expect(page).to have_link '‹ Prev'
+      click_on '‹ Prev'
+      expect(page).to have_link 'Next ›'
+      click_on 'Next ›'
+      expect(page).to have_link '« First'
+      click_on '« First'
+    end
+  end
+
 end

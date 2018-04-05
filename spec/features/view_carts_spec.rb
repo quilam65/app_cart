@@ -12,16 +12,31 @@ describe 'View cart', type: :feature do
     expect(page).to have_content 'My cart'
   end
 
-  it 'info' do
-    visit info_cart_path(cart.id)
-    expect(page).to have_content 'Infomation cart'
-    fill_in 'cart[name]', with: 'qui lam'
-    fill_in 'cart[phone]', with: '992929'
-    fill_in 'cart[address]', with: '57 dien bien'
-    click_on 'Update Cart'
-    expect(page).to have_content 'qui lam'
-    expect(page).to have_content '992929'
+  context 'success' do
+    it 'info' do
+      visit info_cart_path(cart.id)
+      expect(page).to have_content 'Infomation cart'
+      fill_in 'cart[name]', with: 'qui lam'
+      fill_in 'cart[phone]', with: '992929'
+      fill_in 'cart[address]', with: '57 dien bien'
+      click_on 'Update Cart'
+      expect(page).to have_content 'qui lam'
+      expect(page).to have_content '992929'
+    end
   end
+
+  context 'fail' do
+    it 'info' do
+      visit info_cart_path(cart.id)
+      expect(page).to have_content 'Infomation cart'
+      fill_in 'cart[name]', with: ''
+      fill_in 'cart[phone]', with: '992929'
+      fill_in 'cart[address]', with: '57 dien bien'
+      click_on 'Update Cart'
+      expect(page).to have_content 'Name, Phone, Address can\'t empty!'
+    end
+  end
+
 
 
 end
