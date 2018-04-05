@@ -5,5 +5,7 @@ class Cart < ApplicationRecord
   has_many :products , through: :orders
   belongs_to :user
 
+  scope :update_status, -> { update(status: true) }
+
   paginates_per 5
 end
