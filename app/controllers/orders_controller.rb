@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    redirect_to cart_path(@order.cart_id), notice: 'Detele product from cart success!' if @order.destroy
+    return redirect_to cart_path(@order.cart_id), notice: 'Detele product from cart success!' if @order.destroy
     redirect_to cart_path(@order.cart_id), notice: 'Detele product from cart fail!'
   end
 
