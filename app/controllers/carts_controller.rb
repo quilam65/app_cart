@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_product
   before_action :sum_price, only: [:show]
   def show
