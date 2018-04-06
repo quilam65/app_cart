@@ -2,10 +2,7 @@ class CartsController < ApplicationController
   before_action :get_product
   before_action :sum_price, only: [:show]
   def show
-    # redirect to history hshow cart
-    if @cart.status==true
-      redirect_to "/histories/#{@cart.id}"
-    end
+    redirect_to "/histories/#{@cart.id}" if @cart.status==true # redirect to history hshow cart
   end
 
   def info
@@ -26,11 +23,7 @@ class CartsController < ApplicationController
         :description => "creating a payment" } ] } )
 
     @payment.create
-
-    if params[:token].present? && params[:PayerID].present?
-      @cart.update(payment_id: params[:paymentId], token_payment: params[:token], payer_id: params[:PayerID])
-      redirect_to execute_cart_path(id: @cart.id, paymentId:params[:paymentId])
-    end
+    return redirect_to execute_cart_path(id: @cart.id, paymentId:params[:paymentId]) if @cart.update(payment_id: params[:paymentId], token_payment: params[:token], payer_id: params[:PayerID]) if params[:PayerID].present?
   end
 
   def update
@@ -41,9 +34,7 @@ class CartsController < ApplicationController
 
   def execute
     @payment = PayPal::SDK::REST::Payment.find(@cart.payment_id)
-    if @payment.execute( :payer_id => @cart.payer_id)
-      return redirect_to root_path, notice: 'Payment success!' if @cart.update_status
-    end
+    return redirect_to root_path, notice: 'Payment success!' if (@cart.update(status: true)) && (@payment.execute( :payer_id => @cart.payer_id))
     redirect_to cart_path(@cart), notice: @payment.error # Error Hash
   end
 
@@ -53,6 +44,7 @@ class CartsController < ApplicationController
       return false if @assigns_cart[:name].blank? or @assigns_cart[:address].blank? or @assigns_cart[:phone].blank?
       return true
     end
+
 
     def get_product
       @cart = Cart.find(params[:id])
