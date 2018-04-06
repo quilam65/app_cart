@@ -36,22 +36,7 @@ describe 'View cart', type: :feature do
       expect(page).to have_content 'Name, Phone, Address can\'t empty!'
     end
   end
-  conext 'payment' do
-    it 'success' do
-      visit info_cart_path(cart.id)
-      expect(page).to have_content 'Infomation cart'
-      fill_in 'cart[name]', with: ''
-      fill_in 'cart[phone]', with: '992929'
-      fill_in 'cart[address]', with: '57 dien bien'
-      click_on 'Update Cart'
-      click_on 'payment'
-      fill_in 'login_email', with: 'anhqui1995-buyer@gmail.com'
-      fill_in 'login_password', with: 'anhqui1995'
-      click_on 'Log In'
-      click_on 'Pay Now'
-      expect(page).to have_content 'Payment success!'
-    end
-  end
+
 
 
 

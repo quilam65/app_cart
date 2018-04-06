@@ -32,12 +32,12 @@ RSpec.describe CartsController, type: :controller do
               :total => cart.total_amount_cents,
               :currency => "USD" },
             :description => "creating a payment" } ] } )
-            
+
         payment.create
         expect(payment.error).to be_nil
         expect(payment.id).not_to be_nil
-        expect(payment.approval_url).to be_nil
-        expect(payment.token).to be_nil
+        expect(payment.approval_url).not_to be_nil
+        expect(payment.token).not_to be_nil
       end
     end
     it 'get token' do

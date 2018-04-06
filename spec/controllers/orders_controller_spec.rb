@@ -25,10 +25,10 @@ RSpec.describe OrdersController, type: :controller do
   end
 
   describe 'update' do
-    quanlity = 4
+    order = { quanlity: 4 }
     it 'update quanlity' do
-      put :update, params: { id: orders.first.id, quanlity: quanlity }
-      expect(assigns(:order).quanlity).to eq quanlity
+      put :update, params: { id: orders.first.id, order: order }
+      expect(assigns(:order).quanlity).to eq order[:quanlity]
     end
   end
 end
