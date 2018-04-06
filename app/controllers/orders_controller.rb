@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
-before_action :assign_params, only: [:create]
-before_action :get_order, only: [:update, :destroy]
-skip_before_action :verify_authenticity_token, :only => [:update]
+  before_action :assign_params, only: [:create, :update]
+  before_action :get_order, only: [:update, :destroy]
+  skip_before_action :verify_authenticity_token, :only => [:update]
+  before_action :authenticate_user!
 
   def create
-    @order = Order.where('product_id = ? AND cart_id = ?', @order_params[:product_id], @order_params[:cart_id]).limit(1).first
+    @order = Order.find_order(@order_params[:product_id], @order_params[:cart_id])
     if @order.present?
       @order.order = @order_params[:order]
       @order.quanlity = @order.quanlity.to_i + @order_params[:quanlity].to_i
@@ -12,8 +13,7 @@ skip_before_action :verify_authenticity_token, :only => [:update]
       @order = Order.new(@order_params)
     end
     return redirect_to cart_path(@order.cart_id), notice: 'Add item to cart success!' if @order.save
-    product = Product.find(@order_params[:product_id])
-    redirect_to category_product_path(product.category, product.id), alert: 'Fail'
+    redirect_to category_product_path(@order.product.category, @order.product.id), alert: 'Fail'
   end
 
   def destroy
@@ -23,17 +23,15 @@ skip_before_action :verify_authenticity_token, :only => [:update]
   end
 
   def update
-    if @order.update(quanlity: params[:quanlity].to_i)
-      flash[:notice] = 'Update quanlity success'
-    else
-      flash[:notice] = 'Update quanlity fail!'
-    end
+    return redirect_to cart_path(@order.cart_id), notice: 'Update quanlity success' if @order.update(@order_params)
+    flash[:notice] = 'Update quanlity fail!'
   end
 
   private
     def get_order
       @order = Order.find(params[:id])
     end
+
     def assign_params
       @order_params = params.require(:order).permit(:quanlity,
                                                     :order,
