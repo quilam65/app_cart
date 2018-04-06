@@ -25,7 +25,7 @@ $(window).ready(function(){
       url: '/orders/' + id,
       type: 'PUT',
       data: {
-        "quanlity": quanlity
+        'order[quanlity]': quanlity
       }
     }).done(setTimeout(function() { location.reload() }, 1000));
   }
