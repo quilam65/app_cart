@@ -8,4 +8,5 @@ class Order < ApplicationRecord
     return Order.where('product_id = ? AND cart_id = ?',product_id, cart_id).limit(1).first
   end
 
+  scope :finished_cart, -> { joins(:cart).where('carts.status = true') } 
 end

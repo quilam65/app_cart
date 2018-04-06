@@ -65,6 +65,7 @@ RailsAdmin.config do |config|
 
   config.model 'Order' do
     list do
+      scopes [:finished_cart]
       field :cart do
         searchable ["cart.name"]
       end
