@@ -3,9 +3,7 @@ class CartsController < ApplicationController
   before_action :sum_price, only: [:show]
   def show
     # redirect to history hshow cart
-    if @cart.status==true
-      redirect_to "/histories/#{@cart.id}"
-    end
+    redirect_to "/histories/#{@cart.id}", if @cart.status==true
   end
 
   def info
@@ -35,7 +33,6 @@ class CartsController < ApplicationController
 
   def update
     @assigns_cart = params.require(:cart).permit(:name, :phone, :address)
-
     return redirect_to payment_cart_path(@cart.id) if @cart.update(@assigns_cart)
     redirect_to info_cart_path(@cart.id), alert: 'Input not empty!'
   end

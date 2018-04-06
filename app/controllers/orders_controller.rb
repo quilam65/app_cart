@@ -5,21 +5,14 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @order = Order.find_order(@order_params[:product_id], @order_params[:cart_id])
-    if @order.present?
-      @order.order = @order_params[:order]
-      @order.quanlity = @order.quanlity.to_i + @order_params[:quanlity].to_i
-    else
-      @order = Order.new(@order_params)
-    end
+    @order = Order.new(@order_params)
     return redirect_to cart_path(@order.cart_id), notice: 'Add item to cart success!' if @order.save
     redirect_to category_product_path(@order.product.category, @order.product.id), alert: 'Fail'
   end
 
   def destroy
-    @order.destroy
-    redirect_to cart_path(@order.cart_id)
-    flash[:notice] = 'Detele product from cart success!'
+    redirect_to cart_path(@order.cart_id), notice: 'Detele product from cart success!' if @order.destroy
+    redirect_to cart_path(@order.cart_id), notice: 'Detele product from cart fail!'
   end
 
   def update
