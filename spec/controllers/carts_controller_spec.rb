@@ -18,6 +18,28 @@ RSpec.describe CartsController, type: :controller do
   end
 
   describe 'payment' do
+    context 'buy' do
+      it 'create payment' do
+        payment = PayPal::SDK::REST::Payment.new({
+          :intent => "sale",
+          :payer => {
+            :payment_method => "paypal" },
+          :redirect_urls => {
+            :return_url => 'http://localhost:3000' + payment_cart_path(cart.id),
+            :cancel_url => 'http://localhost:3000' + cart_path(cart.id) },
+          :transactions => [ {
+            :amount => {
+              :total => cart.total_amount_cents,
+              :currency => "USD" },
+            :description => "creating a payment" } ] } )
+            
+        payment.create
+        expect(payment.error).to be_nil
+        expect(payment.id).not_to be_nil
+        expect(payment.approval_url).to be_nil
+        expect(payment.token).to be_nil
+      end
+    end
     it 'get token' do
       get :payment, params: { id: cart.id }
       expect(assigns(:cart).id).to eq cart.id
