@@ -3,9 +3,7 @@ class CartsController < ApplicationController
   before_action :sum_price, only: [:show]
   def show
     # redirect to history hshow cart
-    if @cart.status==true
-      redirect_to "/histories/#{@cart.id}"
-    end
+    redirect_to "/histories/#{@cart.id}", if @cart.status==true
   end
 
   def info
