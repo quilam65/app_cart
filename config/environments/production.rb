@@ -22,7 +22,7 @@ Rails.application.configure do
     }
 
   # Show full error reports.
-  config.action_mailer.default_url_options = { host: ENV["HOST"]}
+  # config.action_mailer.default_url_options = { host: ENV["HOST"]}
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
