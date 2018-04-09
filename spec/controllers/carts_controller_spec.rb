@@ -38,11 +38,59 @@ RSpec.describe CartsController, type: :controller do
         expect(payment.id).not_to be_nil
         expect(payment.approval_url).not_to be_nil
         expect(payment.token).not_to be_nil
+        expect(payment).to be_success
       end
     end
+
     it 'get token' do
       get :payment, params: { id: cart.id }
       expect(assigns(:cart).id).to eq cart.id
+    end
+
+    it "List" do
+      payment_history = PayPal::SDK::REST::Payment.all( "count" => 5 )
+      expect(payment_history.error).to be_nil
+      expect(payment_history.count).to eql 5
+    end
+
+    it "Find" do
+      payment_history =  PayPal::SDK::REST::Payment.all( "count" => 1 )
+      payment =  PayPal::SDK::REST::Payment.find(payment_history.payments[0].id)
+      expect(payment.error).to be_nil
+    end
+  end
+
+  describe "Validation", :integration => true do
+
+    it "Create with empty values" do
+      payment = PayPal::SDK::REST::Payment.new
+      expect(payment.create).to be_falsey
+    end
+
+    it "Find with invalid ID" do
+      expect {
+        payment = PayPal::SDK::REST::Payment.find("Invalid")
+      }.to raise_error PayPal::SDK::Core::Exceptions::ResourceNotFound
+    end
+
+    it "Find with nil" do
+      expect{
+        payment = PayPal::SDK::REST::Payment.find(nil)
+      }.to raise_error ArgumentError
+    end
+
+    it "Find with empty string" do
+      expect{
+        payment = PayPal::SDK::REST::Payment.find("")
+      }.to raise_error ArgumentError
+    end
+
+    it "Find record with expired token" do
+      expect {
+        PayPal::SDK::REST::Payment.api.token
+        PayPal::SDK::REST::Payment.api.token.sub!(/^/, "Expired")
+        PayPal::SDK::REST::Payment.all(:count => 1)
+      }.not_to raise_error
     end
   end
 
