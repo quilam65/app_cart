@@ -1,0 +1,4 @@
+.row
+  - @categories.each do |category|
+    = render 'category', category: category
+.row = paginate @categories, :theme => 'twitter-bootstrap-3'

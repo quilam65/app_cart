@@ -1,0 +1,4 @@
+.row
+  - @products.each do |product|
+    = render 'products/product', product: product
+.row = paginate @products, :theme => 'twitter-bootstrap-3'

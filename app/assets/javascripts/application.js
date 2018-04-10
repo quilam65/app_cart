@@ -17,7 +17,7 @@ function goBack() {
     window.history.back();
 }
 $(window).ready(function(){
-  $('.quanltiy').on('change',function(){
+  $('.quanlity').on('change',function(){
     id = $(this).parent().attr('name');
     quanlity = $(this).val()
     if ((quanlity)>0) {

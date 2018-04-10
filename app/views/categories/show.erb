@@ -1,8 +1,0 @@
-<div class="row">
-  <% @products.each do |product| %>
-    <%= render 'products/product', product: product %>
-  <% end %>
-</div>
-<div class="row">
-  <%= paginate @products, :theme => 'twitter-bootstrap-3'%>
-</div>

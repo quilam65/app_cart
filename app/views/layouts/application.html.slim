@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title | AppCart
+    = csrf_meta_tags
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag    'application'
+    = stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
+  body
+    .container
+      = render 'layouts/navbar'
+      - if notice.present?
+        .alert.alert-success[role="alert"] = notice
+      - if alert.present?
+        .alert.alert-danger[role="alert"] = alert
+      = yield
