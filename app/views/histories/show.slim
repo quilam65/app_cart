@@ -1,40 +1,35 @@
-h2
-  | My history
+h2 My history
 p
-  strong
-    | Name: 
+  strong Name:
   =@cart.name
 p
-  strong
-    | Phone: 
+  strong Phone:
   =@cart.phone
 p
-  strong
-    | Address: 
+  strong Address:
   =@cart.address
 table.table
   thead
     tr
-      th
-        | Image
-      th
-        | Title
-      th
-        | Price
+      th Image
+      th Title
+      th Price
+      th Quanlity
+      th Total
   tbody
     - @cart.orders.each do |order|
       tr
         td
-          | <img src="
-          = order.product.image
-          | " alt="" width="50px">
+          img(src=order.product.image width="50px")
         td
-          |  <a href="
-          =category_product_path(order.product.category_id, order.product.id)
-          | ">
-          = order.product.title
+          a< href=category_product_path(order.product.category_id, order.product.id) = order.product.title
         td
+          | $
           = order.product.price
+        td = order.quanlity
+        td
+          | $
+          = order.quanlity*order.product.price
 p
-  | Total: 
+  | Total: $
   =@cart.total_amount_cents

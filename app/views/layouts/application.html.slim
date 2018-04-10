@@ -1,8 +1,7 @@
 doctype html
 html
   head
-    title
-      | AppCart
+    title | AppCart
     = csrf_meta_tags
     = javascript_include_tag 'application'
     = stylesheet_link_tag    'application'
@@ -11,9 +10,7 @@ html
     .container
       = render 'layouts/navbar'
       - if notice.present?
-        .alert.alert-success[role="alert"]
-          = notice
+        .alert.alert-success[role="alert"] = notice
       - if alert.present?
-        .alert.alert-danger[role="alert"]
-          = alert
+        .alert.alert-danger[role="alert"] = alert
       = yield

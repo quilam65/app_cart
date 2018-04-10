@@ -1,9 +1,8 @@
 .col-md-4
   .product-item.category
-    a(href=category_path(category))
+    a< href=category_path(category)
       .pi-img-wrapper
         img.img-responsive(src=category.products.first.try(:image) alt="Berry Lace Dress")
       h3
-        a(href=category_path(category))
-          =category.title
+        a< href=category_path(category) =category.title
       .sticker.sticker-new

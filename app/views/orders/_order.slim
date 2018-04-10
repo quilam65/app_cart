@@ -1,18 +1,13 @@
 tbody
   tr
-    td[data-th="Product"]
-      .row
-        .col-sm-10
-          h4.nomargin
-            = link_to(order.product.title,category_product_path(order.product.category_id, order.product.id))
-          p
-            = order.product.description
-    td.price(data-th="Price")
-      = order.product.price
+    td data-th="Product"
+      .row.col-sm-10
+        h4.nomargin = link_to(order.product.title,category_product_path(order.product.category_id, order.product.id))
+        p = order.product.description
+    td.price(data-th="Price") = order.product.price
     td(data-th="Quantity" name=order.id)
       input.form-control.text-center.quanlity(type="number" value=order.quanlity)
-    td.text-center.quanlity-price(data-th="Subtotal")
-      =order.product.price*order.quanlity
+    td.text-center.quanlity-price(data-th="Subtotal") =order.product.price*order.quanlity
     td.actions(ata-th="")
       a.btn.btn-danger.btn-sm(href=order_path(order.id) data-confirm="Are you sure?" data-method="delete")
         i.fa.fa-trash-o

@@ -1,21 +1,15 @@
 = form_for(current_user, html: { method: :put }) do |f|
   .field
     = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    br = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
     = f.label :name
-    br
-    = f.text_field :name, autofocus: true
+    br = f.text_field :name, autofocus: true
   .field
     = f.label :phone
-    br
-    = f.text_field :phone, autofocus: true
+    br = f.text_field :phone, autofocus: true
   .field
     = f.label :address
-    br
-    = f.text_field :address, autofocus: true
-  .actions
-    = f.submit "Update"
+    br = f.text_field :address, autofocus: true
+  .actions = f.submit "Update"
 =link_to('Change password', edit_user_registration_path(current_user), class:'btn btn-info')
-= link_to "Back", :back
