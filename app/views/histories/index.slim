@@ -1,5 +1,4 @@
-h2
-  | Histories
+h2 Histories
 table.table
   thead
     tr
@@ -25,5 +24,4 @@ table.table
           | $
           =cart.total_amount_cents
         td =cart.created_at
-.row
-  = paginate @carts, :theme => 'twitter-bootstrap-3'
+.row = paginate @carts, :theme => 'twitter-bootstrap-3'
