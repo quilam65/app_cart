@@ -1,0 +1,38 @@
+h1
+  | My cart
+table#cart.table.table-hover.table-condensed
+  thead
+    tr
+      th[style="width:50%"]
+        | Product
+      th[style="width:10%"]
+        | Price
+      th[style="width:8%"]
+        | Quantity
+      th.text-center[style="width:22%"]
+        | Subtotal
+      th[style="width:10%"]
+  - @orders.each do |order|
+    = render 'orders/order', order: order
+  tfoot
+    tr.visible-xs
+      td.text-center
+        strong
+          | Total $
+          =@cart.total_amount_cents
+    tr
+      td.hidden-xs[colspan="2"]
+      td.hidden-xs.text-center
+        strong
+          | Total $
+          =@cart.total_amount_cents
+      - if @cart.total_amount_cents>0
+        td
+          a.btn.btn-success.btn-block< href=info_cart_path(params[:id])
+            | Pay
+            i.fa.fa-angle-right
+      - else
+        td
+          a.btn.btn-success.btn-block < href=root_path()
+            | Shopping
+            i.fa.fa-angle-right

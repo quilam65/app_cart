@@ -1,0 +1,19 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand(href=root_url)
+    | Home
+  - if @cart.present?
+      a.navbar-brand(href=cart_path(@cart))
+        | Cart
+  - if current_user.present?
+    a.navbar-brand[href="/histories"]
+      | My history
+    p.navbar-text.navbar-right
+      a(href=destroy_user_session_path() data-method='delete' class="navbar-link")
+        | Logout
+    p.navbar-text.navbar-right
+      a.navbar-link(href=user_path(current_user))
+        | Me
+  - else
+    p.navbar-text.navbar-right
+      a.navbar-link(href=new_user_session_path)
+        | Login

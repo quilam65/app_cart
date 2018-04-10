@@ -1,0 +1,41 @@
+h2
+  | Histories
+table.table
+  thead
+    tr
+      th
+        | Payment ID
+      th
+        | Name
+      th
+        | Address
+      th
+        | Total
+      th
+        | Status
+      th
+        | Date
+  tbody
+    - @carts.each do |cart|
+      tr
+        td
+          | <a href="/histories/
+          = cart.id
+          | ">
+          =cart.payment_id
+        td
+          =cart.name
+        td
+          =cart.address
+        td
+          - if !cart.finished
+            |  Handing 
+          - else
+            |  Finished 
+        td
+          | $ 
+          =cart.total_amount_cents
+        td
+          =cart.created_at
+.row
+  = paginate @carts, :theme => 'twitter-bootstrap-3'

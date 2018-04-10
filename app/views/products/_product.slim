@@ -1,0 +1,13 @@
+.col-md-4
+  .product-item
+    a(href=category_product_path(product.category_id, product))
+      .pi-img-wrapper
+        img.img-responsive(src=product.image alt="Berry Lace Dress")
+      h3
+        a(href=category_product_path(product.category_id, product))
+          =product.title
+      .sticker.sticker-new
+      .pi-price
+        =product.price
+      a.btn.add2cart(href=category_product_path(product.category_id, product))
+        | Add to cart

@@ -1,0 +1,40 @@
+h2
+  | My history
+p
+  strong
+    | Name: 
+  =@cart.name
+p
+  strong
+    | Phone: 
+  =@cart.phone
+p
+  strong
+    | Address: 
+  =@cart.address
+table.table
+  thead
+    tr
+      th
+        | Image
+      th
+        | Title
+      th
+        | Price
+  tbody
+    - @cart.orders.each do |order|
+      tr
+        td
+          | <img src="
+          = order.product.image
+          | " alt="" width="50px">
+        td
+          |  <a href="
+          =category_product_path(order.product.category_id, order.product.id)
+          | ">
+          = order.product.title
+        td
+          = order.product.price
+p
+  | Total: 
+  =@cart.total_amount_cents
