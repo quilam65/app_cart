@@ -8,28 +8,15 @@ p
 p
   strong Address:
   =@cart.address
-table.table
+table#cart.table.table-hover.table-condensed.history
   thead
     tr
-      th Image
-      th Title
-      th Price
-      th Quanlity
-      th Total
-  tbody
-    - @cart.orders.each do |order|
-      tr
-        td
-          img(src=order.product.image width="50px")
-        td
-          a< href=category_product_path(order.product.category_id, order.product.id) = order.product.title
-        td
-          | $
-          = order.product.price
-        td = order.quanlity
-        td
-          | $
-          = order.quanlity*order.product.price
+      th[style="width:50%"] Product
+      th[style="width:10%"] Price
+      th[style="width:8%"] Quantity
+      th.text-center[style="width:22%"] Subtotal
+      th[style="width:10%"]
+  = render partial: 'orders/order', collection: @cart.orders
 p
   | Total: $
   =@cart.total_amount_cents

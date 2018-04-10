@@ -7,8 +7,8 @@ table#cart.table.table-hover.table-condensed
       th[style="width:8%"] Quantity
       th.text-center[style="width:22%"] Subtotal
       th[style="width:10%"]
-  - @orders.each do |order|
-    = render 'orders/order', order: order
+  = render partial: 'orders/order', collection: @orders
+
   tfoot
     tr.visible-xs
       td.text-center
@@ -23,10 +23,11 @@ table#cart.table.table-hover.table-condensed
           =@cart.total_amount_cents
       td
         - if @cart.total_amount_cents > 0
-          a.btn.btn-success.btn-block< href=info_cart_path(params[:id])
+          a.btn.btn-success.btn-block
+            <href= (@cart.total_amount_cents > 0) ? info_cart_path(params[:id]) : root_path()
             | Pay
             i.fa.fa-angle-right
         - else
           a.btn.btn-success.btn-block< href=root_path()
-            | Shopping
+            | Shopping 
             i.fa.fa-angle-right

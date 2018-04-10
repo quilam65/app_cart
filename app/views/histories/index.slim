@@ -8,16 +8,5 @@ table.table
       th Total
       th Status
       th Date
-  tbody
-    - @carts.each do |cart|
-      tr
-        td
-          a< href="/histories/#{cart.id}" =cart.payment_id
-        td =cart.name
-        td =cart.address
-        td =(!cart.finished) ? 'Handing' : 'Finished'
-        td
-          | $
-          =cart.total_amount_cents
-        td =cart.created_at
+  tbody = render partial: 'carts/cart', collection: @carts
 .row = paginate @carts, :theme => 'twitter-bootstrap-3'

@@ -1,4 +1,2 @@
-.row
-  - @categories.each do |category|
-    = render 'category', category: category
-.row = paginate @categories, :theme => 'twitter-bootstrap-3'
+.row= render partial: 'category', collection: @categories
+.row= paginate @categories, :theme => 'twitter-bootstrap-3'

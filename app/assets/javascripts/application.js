@@ -17,6 +17,9 @@ function goBack() {
     window.history.back();
 }
 $(window).ready(function(){
+
+  $('table.history').find('.actions').remove()
+  
   $('.quanlity').on('change',function(){
     id = $(this).parent().attr('name');
     quanlity = $(this).val()
