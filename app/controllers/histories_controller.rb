@@ -1,7 +1,7 @@
 class HistoriesController < ApplicationController
 
   def index
-   @carts = current_user.carts.where(status: true).page(params[:page]).per(5)
+   @carts = current_user.carts.where(status: true).page(params[:page])
   end
 
   def show

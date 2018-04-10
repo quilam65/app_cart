@@ -7,5 +7,6 @@ FactoryBot.define do
     address '195 dien bien phu'
     finished false
     user_id { create(:user).id }
+    created_at Time.now
   end
 end
