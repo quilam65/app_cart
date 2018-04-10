@@ -8,13 +8,8 @@
       small PRICE
     h3(style="margin-top:0px;") = @product.price
     = simple_form_for @order do |f|
-      .form-group
-        - if @order.quanlity.nil?
-          = f.input :quanlity, input_html: { class: 'form-control', value: 1 }
-        - else
-          = f.input :quanlity, input_html: { class: 'form-control'}
+      .form-group = @order.quanlity.nil? ? (f.input :quanlity, input_html: { class: 'form-control', value: 1 }) : (f.input :quanlity, input_html: { class: 'form-control'})
       .form-group = f.input :order, input_html: { class: 'form-control' }
       = f.input :product_id, label: false, input_html: { value: params[:id], type: 'hidden' }
-      - if @cart.present?
-        = f.input :cart_id, label: false, input_html: { value: @cart.id, type: 'hidden' }
+      = (f.input :cart_id, label: false, input_html: { value: @cart.id, type: 'hidden' }) if @cart.present?
       .form-group = f.button :submit, class:"btn btn-success form-control"

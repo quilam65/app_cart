@@ -21,13 +21,12 @@ table#cart.table.table-hover.table-condensed
         strong
           | Total $
           =@cart.total_amount_cents
-      - if @cart.total_amount_cents > 0
-        td
+      td
+        - if @cart.total_amount_cents > 0
           a.btn.btn-success.btn-block< href=info_cart_path(params[:id])
             | Pay
             i.fa.fa-angle-right
-      - else
-        td
+        - else
           a.btn.btn-success.btn-block< href=root_path()
             | Shopping
             i.fa.fa-angle-right
