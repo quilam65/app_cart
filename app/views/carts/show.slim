@@ -23,11 +23,10 @@ table#cart.table.table-hover.table-condensed
           =@cart.total_amount_cents
       td
         - if @cart.total_amount_cents > 0
-          a.btn.btn-success.btn-block
-            <href= (@cart.total_amount_cents > 0) ? info_cart_path(params[:id]) : root_path()
+          a.btn.btn-success.btn-block< href=info_cart_path(params[:id])
             | Pay
             i.fa.fa-angle-right
         - else
           a.btn.btn-success.btn-block< href=root_path()
-            | Shopping 
+            | Shopping
             i.fa.fa-angle-right
