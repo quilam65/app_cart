@@ -35,10 +35,6 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'rails_admin', '~> 1.3'
 
-gem 'capistrano', '~> 3.7', '>= 3.7.1'
-gem 'capistrano-rails', '~> 1.2'
-gem 'capistrano-passenger', '~> 0.2.0'
-
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -69,6 +65,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "letter_opener"
   gem 'awesome_print'
+
+  gem 'capistrano', '~> 3.7', '>= 3.7.1'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-rbenv', '~> 2.1'
+  # gem 'capistrano-passenger', '~> 0.2.0'
 
 end
 
