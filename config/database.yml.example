@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  username: deploy
+  password:
+  host: 127.0.0.1
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: app-cart_development
+
+  #
+test:
+  <<: *default
+  database: app-cart_test
+
+production:
+  <<: *default
+  database: my_app_name_production
+  username: app-cart
+  password: <%= ENV['APP-CART_DATABASE_PASSWORD'] %>
