@@ -2,10 +2,11 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: deploy
-  password:
-  host: locahost
+  password: 
+  host: 127.0.0.1
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 production:
   <<: *default
-  database: 
+  database: my_app_name_production
+  password: <%= ENV['APP-CART_DATABASE_PASSWORD'] %>
